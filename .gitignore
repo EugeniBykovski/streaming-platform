@@ -16,6 +16,9 @@
 # production
 /build
 
+# ngrok
+ngrok.yml
+
 # misc
 .DS_Store
 *.pem
