@@ -10,4 +10,6 @@ export const getSelf = async () => {
   });
 
   if (!user) throw new Error("Not Found");
+
+  return user;
 };

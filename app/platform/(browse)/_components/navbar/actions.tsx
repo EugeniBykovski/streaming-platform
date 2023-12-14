@@ -12,28 +12,30 @@ const Actions = async () => {
       <Link className="text-muted-foreground hover:text-primary" href={"/"}>
         <Home className="h-4 w-4 lg:mr-2" />
       </Link>
+
+      {!!user && (
+        <div className="flex items-center gap-x-4">
+          <Button
+            size="sm"
+            variant="ghost"
+            className="text-muted-foreground hover:text-primary"
+            asChild
+          >
+            <Link href={`/u/${user.username}`}>
+              <Clapperboard className="h-5 w-5 lg:mr-2" />
+              <span className="hidden lg:block">Dashboard</span>
+            </Link>
+          </Button>
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      )}
+
       {!user && (
         <SignInButton>
           <Button size="sm" variant="primary">
             Login
           </Button>
         </SignInButton>
-      )}
-      {!!user && (
-        <>
-          <Button
-            size="sm"
-            variant="ghost"
-            asChild
-            className="text-muted-foreground hover:text-primary"
-          >
-            <Link href={`/platform/user/${user.username}`}>
-              <Clapperboard className="h-4 w-4 lg:mr-2" />
-              <span className="hidden lg:block">Dashboard</span>
-            </Link>
-          </Button>
-          <UserButton />
-        </>
       )}
     </div>
   );
